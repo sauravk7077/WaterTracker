@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Button } from 'react-native-paper';
+import {View, Text, StyleSheet} from 'react-native';
+import {Button} from 'react-native-paper';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +10,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Home({ navigation }) {
+/**
+ * Returns home component
+ * @return {JSX}      Returns Home component
+ */
+export default function Home({navigation}) {
   const handlePress = () => {
     navigation.navigate('AddWater');
   };

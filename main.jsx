@@ -1,6 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Provider as PaperProvider, DefaultTheme } from 'react-native-paper';
+import {Provider as PaperProvider, DefaultTheme} from 'react-native-paper';
 import HomeStack from './routes/homeStack';
 
 const theme = {
@@ -12,16 +11,10 @@ const theme = {
     accent: 'yellow',
   },
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
+/**
+ * Returns HomeStack wrapped in PaperProvider
+ * @return {JSX}      Returns App component
+ */
 export default function App() {
   return (
     <PaperProvider theme={theme}>
