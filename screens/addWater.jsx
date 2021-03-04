@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, FlatList} from 'react-native';
 import {Card, Title, TouchableRipple} from 'react-native-paper';
-import {saveData, readData} from '../dataHandle/dataHanlder';
+import {addWater} from '../dataHandle/waterHandler';
 
 const sizes = [
   {
@@ -48,7 +48,7 @@ export default function AddWater() {
         data={sizes}
         renderItem={({item}) => (
           <TouchableRipple style={styles.card} onPress={async ()=>{
-            console.log(await readData('key'));
+            addWater(item.size);
           }}>
             <Card style={{width: layout.width/2 - 5}}>
               <Card.Content>
