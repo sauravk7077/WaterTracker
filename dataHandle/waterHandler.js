@@ -1,9 +1,9 @@
 import {getByDate, saveByDate, getToday, saveToday} from './dataHandler';
-
+import Actions from '../reduxHanlde/actions';
+import {store} from '../reduxHanlde/store';
 
 const addWater = async (amount) => {
   let waterToday = await getToday();
-  console.log(waterToday);
   if (waterToday == null) {
     waterToday = {};
   }
@@ -12,6 +12,7 @@ const addWater = async (amount) => {
     'amount': amount,
     'time': Date.now(),
   };
+  store.dispatch(Actions.addWater({uuid: uuid, ob: waterToday[uuid]}));
   await saveToday(waterToday);
 };
 

@@ -1,6 +1,9 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Button} from 'react-native-paper';
+import {getTotalAmount} from '../dataHandle/waterHandler';
+import {useSelector} from 'react-redux';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -15,15 +18,37 @@ const styles = StyleSheet.create({
  * @return {JSX}      Returns Home component
  */
 export default function Home({navigation}) {
+  const counter = useSelector((state) => state.water);
   const handlePress = () => {
     navigation.navigate('AddWater');
   };
-  return (
-    <View style={styles.container}>
-      <Button mode="outlined" onPress={handlePress}>
-        <Text>Add Water</Text>
+  const [totalWater, setTotalWater] = useState(null);
+  const setWater = async () => {
+    const t = 0;
+    if (counter != null && Object.keys(counter).length != 0) {
+      // eslint-disable-next-line guard-for-in
+      for (const ob in counter) {
+        t += ob.amount;
+      }
+    }
 
-      </Button>
-    </View>
-  );
+    setTotalWater(t);
+  };
+
+  if (totalWater == null) {
+    setWater();
+    return (
+      <View style={styles.container}>
+        <Text>Loading</Text>
+      </View>);
+  } else {
+    return (
+      <View style={styles.container}>
+        <Text>{}</Text>
+        <Button mode="outlined" onPress={handlePress}>
+          <Text>Add Water</Text>
+        </Button>
+      </View>
+    );
+  }
 }

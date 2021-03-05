@@ -25,8 +25,7 @@ const readData = async (key) => {
 };
 
 const getByDate = async (date) => {
-  console.log(dateToDateString(date));
-  await readData(dateToDateString(date));
+  return await readData(dateToDateString(date));
 };
 
 const saveByDate = async (date, data) => {

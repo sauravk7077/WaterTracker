@@ -1,6 +1,8 @@
 import React from 'react';
 import {Provider as PaperProvider, DefaultTheme} from 'react-native-paper';
 import HomeStack from './routes/homeStack';
+import {Provider as ReduxProvider} from 'react-redux';
+import {store} from './reduxHanlde/store';
 
 const theme = {
   ...DefaultTheme,
@@ -18,7 +20,10 @@ const theme = {
 export default function App() {
   return (
     <PaperProvider theme={theme}>
-      <HomeStack />
+      <ReduxProvider store={store}>
+        <HomeStack />
+      </ReduxProvider>
+
     </PaperProvider>
   );
 }

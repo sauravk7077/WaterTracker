@@ -34,11 +34,15 @@ const sizes = [
  * Returns AddWater component filled with a list of water card components
  * @return {JSX}      Returns AddWater component
  */
-export default function AddWater() {
+export default function AddWater({navigation}) {
   const [layout, setLayout] = useState({
     width: 0,
     height: 0,
   });
+  const handleCardClick = async (amount) => {
+    await addWater(amount);
+    navigation.navigate('Home');
+  };
   return (
     <View
       style={styles.container}
@@ -47,8 +51,8 @@ export default function AddWater() {
         numColumns={2}
         data={sizes}
         renderItem={({item}) => (
-          <TouchableRipple style={styles.card} onPress={async ()=>{
-            addWater(item.size);
+          <TouchableRipple style={styles.card} onPress={() => {
+            handleCardClick(item.size);
           }}>
             <Card style={{width: layout.width/2 - 5}}>
               <Card.Content>
