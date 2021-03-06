@@ -13,5 +13,12 @@ const removeWater = (id) => {
   };
 };
 
+const fillWater = (obs) => {
+  return {
+    type: 'FILLWATER',
+    payload: obs,
+  };
+};
 
-export {addWater, removeWater};
+
+export {addWater, removeWater, fillWater};

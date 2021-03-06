@@ -6,6 +6,8 @@ const waterReducer = (state = {}, action) => {
       return {...state, [action.payload.uuid]: action.payload.ob};
     case 'REMOVEWATER':
       return state;
+    case 'FILLWATER':
+      return action.payload;
     default:
       return state;
   };
