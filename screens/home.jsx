@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {Button} from 'react-native-paper';
+import {Button, IconButton, Colors} from 'react-native-paper';
 import {} from '../dataHandle/waterHandler';
 
 import {useSelector} from 'react-redux';
@@ -23,6 +23,9 @@ export default function Home({navigation}) {
   const handlePress = () => {
     navigation.navigate('AddWater');
   };
+  const handleWaterConsumedBtn = () => {
+    navigation.navigate('ViewWaterConsumed');
+  };
   let total = 0;
   for (const x in waterConsumed) {
     if (waterConsumed[x]?.amount) {
@@ -33,9 +36,12 @@ export default function Home({navigation}) {
   return (
     <View style={styles.container}>
       <Text>{total}</Text>
-      <Button mode="outlined" onPress={handlePress}>
-        <Text>Add Water</Text>
-      </Button>
+      <IconButton
+        icon="plus" color={Colors.orange800}
+        size={50}
+        onPress={handlePress}
+      />
+      <Button onPress={handleWaterConsumedBtn}>See Water Consumed</Button>
     </View>
   );
 }

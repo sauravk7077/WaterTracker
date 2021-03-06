@@ -1,18 +1,19 @@
 import {getByDate, saveByDate, getToday, saveToday} from './dataHandler';
 import {addWater as aw, fillWater} from '../reduxHanlde/actions';
 import {store} from '../reduxHanlde/store';
+import uuid from 'react-native-uuid';
 
 const addWater = async (amount) => {
   let waterToday = await getToday();
   if (waterToday == null) {
     waterToday = {};
   }
-  const uuid = Math.random().toString();
-  waterToday[uuid] = {
+  const id = uuid.v1();
+  waterToday[id] = {
     'amount': amount,
     'time': Date.now(),
   };
-  store.dispatch(aw({uuid: uuid, ob: waterToday[uuid]}));
+  store.dispatch(aw({uuid: id, ob: waterToday[id]}));
   await saveToday(waterToday);
 };
 

@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from '../screens/home';
 import AddWater from '../screens/addWater';
-
+import ViewWaterConsumed from '../screens/viewWaterConsumed';
 const {Navigator, Screen} = createStackNavigator();
 
 /**
@@ -19,6 +19,11 @@ export default function HomeStack() {
           component={AddWater}
           name="AddWater"
           options={{title: 'Add Water'}}
+        />
+        <Screen
+          component={ViewWaterConsumed}
+          name="ViewWaterConsumed"
+          options={{title: 'Water Consumed'}}
         />
       </Navigator>
     </NavigationContainer>
