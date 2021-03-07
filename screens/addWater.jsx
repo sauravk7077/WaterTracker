@@ -51,15 +51,27 @@ export default function AddWater({navigation}) {
         numColumns={2}
         data={sizes}
         renderItem={({item}) => (
-          <TouchableRipple style={styles.card} onPress={() => {
-            handleCardClick(item.size);
-          }}>
-            <Card style={{width: layout.width/2 - 5}}>
-              <Card.Content>
+          <View style={styles.cardBox}>
+            <Card
+              bordered
+              style={
+                {
+                  flex: 1,
+                  flexDirection: 'row',
+                  width: '100%',
+                  height: '100%',
+                  justifyContent: 'center',
+                }
+              }
+              onPress={() => {
+                handleCardClick(item.size);
+              }}>
+              <Card.Content style={styles.card}>
                 <Title>{item.size}</Title>
               </Card.Content>
+
             </Card>
-          </TouchableRipple>)
+          </View>)
 
         }>
 
@@ -73,13 +85,19 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 22,
     justifyContent: 'center',
-    backgroundColor: 'skyblue',
   },
-  card: {
+  cardBox: {
     flex: 1,
     backgroundColor: 'white',
     margin: 5,
+    justifyContent: 'center',
+    borderRadius: 5,
+    borderColor: 'white',
     height: 200,
+  },
+  card: {
+    flex: 1,
+    justifyContent: 'center',
     alignSelf: 'center',
   },
 });
