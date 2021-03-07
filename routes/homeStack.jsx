@@ -5,6 +5,7 @@ import Home from '../screens/home';
 import AddWater from '../screens/addWater';
 import ViewWaterConsumed from '../screens/viewWaterConsumed';
 const {Navigator, Screen} = createStackNavigator();
+import Header from '../components/header';
 
 /**
  * Returns home component
@@ -13,7 +14,7 @@ const {Navigator, Screen} = createStackNavigator();
 export default function HomeStack() {
   return (
     <NavigationContainer>
-      <Navigator>
+      <Navigator screenOptions={{header: (props) => <Header {...props}/>}}>
         <Screen component={Home} name="Home" options={{headerShown: false}} />
         <Screen
           component={AddWater}

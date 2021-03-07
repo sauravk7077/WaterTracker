@@ -1,16 +1,19 @@
 import React, {useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {Button, IconButton, Colors} from 'react-native-paper';
-import {} from '../dataHandle/waterHandler';
-
+import {Button, IconButton, Colors, FAB} from 'react-native-paper';
 import {useSelector} from 'react-redux';
-
+import {AnimatedCircularProgress} from 'react-native-circular-progress';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    bottom: 0,
   },
 });
 
@@ -35,10 +38,22 @@ export default function Home({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Text>{total}</Text>
-      <IconButton
-        icon="plus" color={Colors.orange800}
-        size={50}
+      <AnimatedCircularProgress
+        size={120}
+        width={15}
+        fill={50}
+        tintColor="white"
+        backgroundColor= {Colors.orange600}
+        arcSweepAngle={180}
+        lineCap='round'
+        rotation={-90}
+      >
+        {()=><Text>{total}</Text>}
+      </AnimatedCircularProgress>
+
+      <FAB
+        style={styles.fab}
+        icon="plus"
         onPress={handlePress}
       />
       <Button onPress={handleWaterConsumedBtn}>See Water Consumed</Button>
