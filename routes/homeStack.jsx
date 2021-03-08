@@ -7,6 +7,7 @@ import ViewWaterConsumed from '../screens/viewWaterConsumed';
 const {Navigator, Screen} = createStackNavigator();
 import Header from '../components/header';
 import Settings from '../screens/settings';
+
 /**
  * Returns home component
  * @return {JSX}      Returns Home component

@@ -11,9 +11,13 @@ const theme = {
   roundness: 2,
   colors: {
     ...DefaultTheme.colors,
-    primary: 'tomato',
-    accent: 'tomato',
+    primary: '#001520',
+    accent: 'skyblue',
+    textColor: '#fff',
+    background: '#001520',
+    surface: '#002437',
   },
+  dark: true,
 };
 /**
  * Returns HomeStack wrapped in PaperProvider

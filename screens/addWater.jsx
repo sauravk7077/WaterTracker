@@ -1,8 +1,9 @@
 import React from 'react';
 import {View, StyleSheet, FlatList} from 'react-native';
-import {Card, Title} from 'react-native-paper';
+import {Card, Text} from 'react-native-paper';
 import {addWater} from '../dataHandle/waterHandler';
 import PropTypes from 'prop-types';
+import {globalStyles} from '../styles/globalStyles';
 
 const sizes = [
   {
@@ -42,8 +43,9 @@ export default function AddWater({navigation}) {
   };
   return (
     <View
-      style={styles.container}>
+      style={globalStyles.container}>
       <FlatList
+        style={styles.flatList}
         numColumns={2}
         data={sizes}
         renderItem={({item}) => (
@@ -57,16 +59,14 @@ export default function AddWater({navigation}) {
                   width: '100%',
                   height: '100%',
                   justifyContent: 'center',
-                  borderRadius: 5,
-                  borderColor: 'white',
-                  borderWidth: 5,
+                  margin: 5,
                 }
               }
               onPress={() => {
                 handleCardClick(item.size);
               }}>
               <Card.Content style={styles.card}>
-                <Title>{item.size}</Title>
+                <Text style={styles.text}>{item.size}</Text>
               </Card.Content>
 
             </Card>
@@ -85,9 +85,12 @@ const styles = StyleSheet.create({
     marginTop: 22,
     justifyContent: 'center',
   },
+  flatList: {
+    backgroundColor: '#001520',
+  },
   cardBox: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#001520',
     margin: 2,
     justifyContent: 'center',
     height: 200,
@@ -96,6 +99,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignSelf: 'center',
+  },
+  text: {
+    color: '#fff',
   },
 });
 
