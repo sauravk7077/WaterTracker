@@ -6,7 +6,7 @@ import AddWater from '../screens/addWater';
 import ViewWaterConsumed from '../screens/viewWaterConsumed';
 const {Navigator, Screen} = createStackNavigator();
 import Header from '../components/header';
-
+import Settings from '../screens/settings';
 /**
  * Returns home component
  * @return {JSX}      Returns Home component
@@ -14,6 +14,7 @@ import Header from '../components/header';
 export default function HomeStack() {
   return (
     <NavigationContainer>
+      {/* eslint-disable-next-line react/display-name*/}
       <Navigator screenOptions={{header: (props) => <Header {...props}/>}}>
         <Screen component={Home} name="Home" options={{headerShown: false}} />
         <Screen
@@ -25,6 +26,10 @@ export default function HomeStack() {
           component={ViewWaterConsumed}
           name="ViewWaterConsumed"
           options={{title: 'Water Consumed'}}
+        />
+        <Screen
+          component={Settings}
+          name="Settings"
         />
       </Navigator>
     </NavigationContainer>

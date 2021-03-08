@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, StyleSheet, FlatList} from 'react-native';
-import {Card, Title, TouchableRipple} from 'react-native-paper';
+import {Card, Title} from 'react-native-paper';
 import {addWater} from '../dataHandle/waterHandler';
+import PropTypes from 'prop-types';
 
 const sizes = [
   {
@@ -35,18 +36,13 @@ const sizes = [
  * @return {JSX}      Returns AddWater component
  */
 export default function AddWater({navigation}) {
-  const [layout, setLayout] = useState({
-    width: 0,
-    height: 0,
-  });
   const handleCardClick = async (amount) => {
     await addWater(amount);
     navigation.navigate('Home');
   };
   return (
     <View
-      style={styles.container}
-      onLayout={(event) => setLayout(event.nativeEvent.layout)}>
+      style={styles.container}>
       <FlatList
         numColumns={2}
         data={sizes}
@@ -61,6 +57,9 @@ export default function AddWater({navigation}) {
                   width: '100%',
                   height: '100%',
                   justifyContent: 'center',
+                  borderRadius: 5,
+                  borderColor: 'white',
+                  borderWidth: 5,
                 }
               }
               onPress={() => {
@@ -89,10 +88,8 @@ const styles = StyleSheet.create({
   cardBox: {
     flex: 1,
     backgroundColor: 'white',
-    margin: 5,
+    margin: 2,
     justifyContent: 'center',
-    borderRadius: 5,
-    borderColor: 'white',
     height: 200,
   },
   card: {
@@ -101,3 +98,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 });
+
+AddWater.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};

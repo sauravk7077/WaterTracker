@@ -20,5 +20,12 @@ const fillWater = (obs) => {
   };
 };
 
+const saveSetting = (obs) => {
+  return {
+    type: 'SAVESETTING',
+    payload: obs,
+  };
+};
 
-export {addWater, removeWater, fillWater};
+
+export {addWater, removeWater, fillWater, saveSetting};

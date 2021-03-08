@@ -42,5 +42,15 @@ const saveToday = async (data) => {
   saveByDate(now, data);
 };
 
+const saveSettings = async (ob) => {
+  const data = JSON.stringify(ob);
+  await AsyncStorage.setItem(settingsKey, data);
+};
 
-export {getByDate, saveByDate, getToday, saveToday};
+const readSettings = async (ob) => {
+  const data = await AsyncStorage.getItem(settingsKey);
+  return JSON.parse(data);
+};
+
+
+export {getByDate, saveByDate, getToday, saveToday, saveSettings, readSettings};

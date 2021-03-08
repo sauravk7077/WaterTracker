@@ -1,5 +1,9 @@
 import {combineReducers} from 'redux';
 
+const defaultSettingState = {
+  goal: 2000,
+};
+
 const waterReducer = (state = {}, action) => {
   switch (action.type) {
     case 'ADDWATER':
@@ -13,10 +17,10 @@ const waterReducer = (state = {}, action) => {
   };
 };
 
-const settingReducer = (state = 0, action) => {
+const settingReducer = (state = defaultSettingState, action) => {
   switch (action.type) {
     case 'SAVESETTING':
-      return state + 1;
+      return action.payload;
     default:
       return state;
   };

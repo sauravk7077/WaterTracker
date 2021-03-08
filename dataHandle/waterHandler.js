@@ -1,4 +1,4 @@
-import {getByDate, saveByDate, getToday, saveToday} from './dataHandler';
+import {getToday, saveToday} from './dataHandler';
 import {addWater as aw, fillWater} from '../reduxHanlde/actions';
 import {store} from '../reduxHanlde/store';
 import uuid from 'react-native-uuid';
