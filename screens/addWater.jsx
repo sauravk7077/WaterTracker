@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet, FlatList} from 'react-native';
-import {Card, Text} from 'react-native-paper';
+import {Card, Text, Colors} from 'react-native-paper';
+import {MaterialCommunityIcons} from '@expo/vector-icons';
 import {addWater} from '../dataHandle/waterHandler';
 import PropTypes from 'prop-types';
 import {globalStyles} from '../styles/globalStyles';
@@ -66,6 +67,10 @@ export default function AddWater({navigation}) {
                 handleCardClick(item.size);
               }}>
               <Card.Content style={styles.card}>
+                <MaterialCommunityIcons
+                  name="cup-water"
+                  size={50}
+                  color={Colors.blue500} />
                 <Text style={styles.text}>{item.size}</Text>
               </Card.Content>
 
@@ -101,6 +106,7 @@ const styles = StyleSheet.create({
   card: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
     alignSelf: 'center',
   },
   text: {

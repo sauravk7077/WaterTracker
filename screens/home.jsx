@@ -6,6 +6,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 import PropTypes from 'prop-types';
 import {globalStyles} from '../styles/globalStyles';
+import {calculateAmountToDrinkNow} from '../misc/misc';
 
 const styles = StyleSheet.create({
   container: {
@@ -39,7 +40,8 @@ const styles = StyleSheet.create({
  */
 export default function Home({navigation}) {
   const waterConsumed = useSelector((state) => state.water);
-  const goalAmount = useSelector((state)=>state.settings).goal;
+  const settings = useSelector((state)=>state.settings);
+  const goalAmount = settings.goal;
   const handlePress = () => {
     navigation.navigate('AddWater');
   };
@@ -56,22 +58,30 @@ export default function Home({navigation}) {
       total += waterConsumed[x].amount;
     };
   }
+  const amtDrinkNow = calculateAmountToDrinkNow(
+      settings.startTime, goalAmount, 250,
+  );
+  const color = amtDrinkNow - total > 250 ?
+   (amtDrinkNow - total >= 500? Colors.red500 : Colors.yellow500) :
+    Colors.green500;
   const percentCompleted = Math.round(total/ goalAmount * 100);
+
   return (
     <View style={StyleSheet.compose(globalStyles.container, styles.container)}>
+
       <AnimatedCircularProgress
         size={250}
         width={15}
         fill={percentCompleted}
-        tintColor={Colors.blue200}
+        tintColor={color}
         backgroundColor='#fff'
         arcSweepAngle={270}
         lineCap='round'
         rotation={-135}
+        style={{}}
       >
         {()=><Text style={globalStyles.text}>{total} ml</Text>}
       </AnimatedCircularProgress>
-
       <FAB
         style={styles.fab}
         icon="plus"
