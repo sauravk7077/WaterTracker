@@ -1,7 +1,10 @@
 import {combineReducers} from 'redux';
+import {timeToHourMinuteString} from '../misc/misc';
 
 const defaultSettingState = {
   goal: 2000,
+  startTime: '07:00',
+  endTime: '21:00',
 };
 
 const waterReducer = (state = {}, action) => {

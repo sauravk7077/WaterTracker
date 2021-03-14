@@ -1,10 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {IconButton, Colors, FAB} from 'react-native-paper';
+import {View, StyleSheet} from 'react-native';
+import {IconButton, Colors, FAB, Text} from 'react-native-paper';
 import {useSelector} from 'react-redux';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 import PropTypes from 'prop-types';
+import {globalStyles} from '../styles/globalStyles';
 
 const styles = StyleSheet.create({
   container: {
@@ -57,18 +58,18 @@ export default function Home({navigation}) {
   }
   const percentCompleted = Math.round(total/ goalAmount * 100);
   return (
-    <View style={styles.container}>
+    <View style={StyleSheet.compose(globalStyles.container, styles.container)}>
       <AnimatedCircularProgress
-        size={120}
+        size={250}
         width={15}
         fill={percentCompleted}
-        tintColor="white"
-        backgroundColor= {Colors.orange600}
-        arcSweepAngle={180}
+        tintColor={Colors.blue200}
+        backgroundColor='#fff'
+        arcSweepAngle={270}
         lineCap='round'
-        rotation={-90}
+        rotation={-135}
       >
-        {()=><Text>{total} ml</Text>}
+        {()=><Text style={globalStyles.text}>{total} ml</Text>}
       </AnimatedCircularProgress>
 
       <FAB

@@ -94,6 +94,9 @@ const styles = StyleSheet.create({
     margin: 2,
     justifyContent: 'center',
     height: 200,
+    borderWidth: 5,
+    borderColor: '#001520',
+    borderRadius: 20,
   },
   card: {
     flex: 1,

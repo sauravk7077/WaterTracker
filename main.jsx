@@ -1,9 +1,12 @@
 import React, {useState} from 'react';
-import {Provider as PaperProvider, DefaultTheme} from 'react-native-paper';
+import {
+  Provider as PaperProvider, DefaultTheme, Colors,
+} from 'react-native-paper';
 import HomeStack from './routes/homeStack';
 import {Provider as ReduxProvider} from 'react-redux';
 import {store} from './reduxHanlde/store';
 import {fillTheEntireContainer} from './dataHandle/waterHandler';
+import {loadSettingToStore} from './dataHandle/settingsHandler';
 import AppLoading from 'expo-app-loading';
 
 const theme = {
@@ -12,8 +15,8 @@ const theme = {
   colors: {
     ...DefaultTheme.colors,
     primary: '#001520',
-    accent: 'skyblue',
-    textColor: '#fff',
+    accent: Colors.blue500,
+    text: '#fff',
     background: '#001520',
     surface: '#002437',
   },
@@ -28,7 +31,10 @@ export default function App() {
   if (isLoading) {
     return (
       <AppLoading
-        startAsync={fillTheEntireContainer}
+        startAsync={async () =>{
+          fillTheEntireContainer();
+          loadSettingToStore();
+        }}
         onFinish={()=> setIsLoading(false)}
         onError={console.warn}
       />);
